@@ -1,0 +1,192 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* ── Global Weavers palette ─────────────────────────────── */
+  --background:               #f5f0e8;
+  --foreground:               #1a1040;
+  --card:                     #fdfaf5;
+  --card-foreground:          #1a1040;
+  --popover:                  #fdfaf5;
+  --popover-foreground:       #1a1040;
+  --primary:                  #1a1040;
+  --primary-foreground:       #f5f0e8;
+  --secondary:                #ede8de;
+  --secondary-foreground:     #1a1040;
+  --muted:                    #ede8de;
+  --muted-foreground:         #7a6e5e;
+  --accent:                   #c4622d;
+  --accent-foreground:        #f5f0e8;
+  --destructive:              #b91c1c;
+  --destructive-foreground:   #fdfaf5;
+  --border:                   #ddd4c0;
+  --input:                    #ddd4c0;
+  --ring:                     #c4622d;
+  --radius:                   0.75rem;
+
+  /* ── Brand tokens ───────────────────────────────────────── */
+  --cream:        #f5f0e8;
+  --cream-light:  #fdfaf5;
+  --indigo:       #1a1040;
+  --indigo-mid:   #251558;
+  --indigo-light: rgba(26,16,64,0.08);
+  --terracotta:   #c4622d;
+  --terra-light:  rgba(196,98,45,0.12);
+  --gold:         #c9973a;
+  --warm-gray:    #9c8f7e;
+  --warm-gray-2:  #6b5e4a;
+  --success:      #15803d;
+}
+
+@theme inline {
+  --font-sans:  var(--font-inter),    'Inter',            sans-serif;
+  --font-serif: var(--font-playfair), 'Playfair Display', serif;
+
+  --color-background:             var(--background);
+  --color-foreground:             var(--foreground);
+  --color-card:                   var(--card);
+  --color-card-foreground:        var(--card-foreground);
+  --color-popover:                var(--popover);
+  --color-popover-foreground:     var(--popover-foreground);
+  --color-primary:                var(--primary);
+  --color-primary-foreground:     var(--primary-foreground);
+  --color-secondary:              var(--secondary);
+  --color-secondary-foreground:   var(--secondary-foreground);
+  --color-muted:                  var(--muted);
+  --color-muted-foreground:       var(--muted-foreground);
+  --color-accent:                 var(--accent);
+  --color-accent-foreground:      var(--accent-foreground);
+  --color-destructive:            var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border:                 var(--border);
+  --color-input:                  var(--input);
+  --color-ring:                   var(--ring);
+  --radius-sm:  calc(var(--radius) - 4px);
+  --radius-md:  calc(var(--radius) - 2px);
+  --radius-lg:  var(--radius);
+  --radius-xl:  calc(var(--radius) + 4px);
+
+  --color-cream:        var(--cream);
+  --color-cream-light:  var(--cream-light);
+  --color-indigo:       var(--indigo);
+  --color-indigo-mid:   var(--indigo-mid);
+  --color-terracotta:   var(--terracotta);
+  --color-gold:         var(--gold);
+  --color-warm-gray:    var(--warm-gray);
+}
+
+/* ── Base ───────────────────────────────────────────────── */
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  html {
+    scroll-behavior: smooth;
+    height: 100%;
+    height: 100dvh;
+    overflow: hidden;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    -webkit-tap-highlight-color: transparent;
+    height: 100%;
+    height: 100dvh;
+    overflow: hidden;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-serif), 'Playfair Display', serif;
+  }
+  input, textarea, select, button {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+}
+
+/* ── Utilities ──────────────────────────────────────────── */
+@layer utilities {
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .font-serif { font-family: var(--font-serif), 'Playfair Display', serif; }
+}
+
+/* ── Woven fabric hero texture ──────────────────────────── */
+.fabric-hero {
+  background-color: #1a1040;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px, transparent 8px,
+      rgba(196,98,45,0.07) 8px, rgba(196,98,45,0.07) 9px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px, transparent 8px,
+      rgba(245,240,232,0.035) 8px, rgba(245,240,232,0.035) 9px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent 0px, transparent 18px,
+      rgba(201,151,58,0.04) 18px, rgba(201,151,58,0.04) 19px
+    );
+}
+
+/* ── Diagonal stripe — heritage section ─────────────────── */
+.heritage-stripe {
+  background-image:
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0px, transparent 9px,
+      rgba(196,98,45,0.06) 9px, rgba(196,98,45,0.06) 10px
+    );
+}
+
+/* ── Weave pattern for subtle card accents ──────────────── */
+.weave-pattern {
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(196,98,45,0.05) 0px, rgba(196,98,45,0.05) 1px,
+      transparent 1px, transparent 9px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(196,98,45,0.05) 0px, rgba(196,98,45,0.05) 1px,
+      transparent 1px, transparent 9px
+    );
+}
+
+/* ── Slide-up animation (modals) ────────────────────────── */
+@keyframes slide-up {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+.animate-slide-up { animation: slide-up 0.28s cubic-bezier(0.32, 0.72, 0, 1); }
+
+/* ── Fade-in ────────────────────────────────────────────── */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fade-in 0.35s ease-out both; }
+
+/* ── Pulse glow for Pi badge ────────────────────────────── */
+@keyframes pi-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(196,98,45,0.4); }
+  50%       { box-shadow: 0 0 0 6px rgba(196,98,45,0); }
+}
+.pi-glow { animation: pi-glow 2.5s ease-in-out infinite; }
+
+/* ── Shimmer skeleton ───────────────────────────────────── */
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to   { background-position:  200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, #ede8de 25%, #f5f0e8 50%, #ede8de 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite;
+}
+
+/* ── RTL base ────────────────────────────────────────────── */
+[dir="rtl"] { text-align: right; }
+[dir="rtl"] .no-rtl-flip { direction: ltr; }
