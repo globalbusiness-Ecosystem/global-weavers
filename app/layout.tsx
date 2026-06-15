@@ -38,6 +38,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+      <head>
+        <script src="https://sdk.minepi.com/pi-sdk.js" async></script>
+      </head>
       <body className="font-sans">
         <AppWrapper>{children}</AppWrapper>
       </body>
